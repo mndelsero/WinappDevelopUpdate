@@ -1,0 +1,3120 @@
+{
+	"info": {
+		"_postman_id": "8eb5a46c-1aa5-4295-b620-94bc81ad8620",
+		"name": "Winapp Copy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23556135",
+		"_collection_link": "https://venedicto-4732.postman.co/workspace/Venedicto-Workspace~f84eb4a2-b289-4d93-a5ed-24771b1e1428/collection/23556135-8eb5a46c-1aa5-4295-b620-94bc81ad8620?action=share&source=collection_link&creator=23556135"
+	},
+	"item": [
+		{
+			"name": "categories",
+			"item": [
+				{
+					"name": "Business",
+					"item": [
+						{
+							"name": "Admin",
+							"item": [
+								{
+									"name": "createCategory",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{tokenAdmin}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "name",
+													"value": "restaurant test 1",
+													"type": "text"
+												},
+												{
+													"key": "categoryImage",
+													"type": "file",
+													"src": "/E:/Downloads/imagenes winapp/restaurant.jpg"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{host}}/business/category",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"business",
+												"category"
+											],
+											"query": [
+												{
+													"key": "name",
+													"value": "comida",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "updateCategory",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{tokenAdmin}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "name",
+													"value": "bar",
+													"type": "text"
+												},
+												{
+													"key": "categoryImage",
+													"type": "file",
+													"src": "/E:/Downloads/mac.png"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{host}}/business/category?id=797313c0-7e9e-4aa8-9a13-20402fb50052",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"business",
+												"category"
+											],
+											"query": [
+												{
+													"key": "id",
+													"value": "797313c0-7e9e-4aa8-9a13-20402fb50052"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "deleteCategory",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{tokenAdmin}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/business/category?id=df9ba3ee-d987-49e4-8c3e-37cc75859640",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"business",
+												"category"
+											],
+											"query": [
+												{
+													"key": "id",
+													"value": "df9ba3ee-d987-49e4-8c3e-37cc75859640"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "getAllCategories",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenPartner1}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/business/categories",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"business",
+										"categories"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "comida",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getCategory",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenAdmin}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/business/category?id=53c0c77a-558b-431a-a589-8ebaa6b30760",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"business",
+										"category"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "53c0c77a-558b-431a-a589-8ebaa6b30760"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Products",
+					"item": [
+						{
+							"name": "Admin",
+							"item": [
+								{
+									"name": "createCategory",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{tokenAdmin}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "categoryImage",
+													"type": "file",
+													"src": "/E:/Downloads/imagenes winapp/pancho.jpg"
+												},
+												{
+													"key": "name",
+													"value": "hot dog category test ",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{host}}/product/category",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"product",
+												"category"
+											],
+											"query": [
+												{
+													"key": "name",
+													"value": "comida",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "updateCategory",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{tokenAdmin}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "categoryImage",
+													"type": "file",
+													"src": [
+														"/E:/Downloads/mac.png",
+														"/E:/Downloads/picante .jpg"
+													]
+												},
+												{
+													"key": "name",
+													"value": "category 3 actualizada",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{host}}/product/category?id=2cb47c52-c199-4d0a-85a0-97ff8154f4ac",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"product",
+												"category"
+											],
+											"query": [
+												{
+													"key": "id",
+													"value": "2cb47c52-c199-4d0a-85a0-97ff8154f4ac"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "deleteCategory",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{tokenAdmin}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/product/category?id=9d722b45-0cf6-42aa-901b-5fa006fe726b",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"product",
+												"category"
+											],
+											"query": [
+												{
+													"key": "id",
+													"value": "9d722b45-0cf6-42aa-901b-5fa006fe726b"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "getAllCategories",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenUser1}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/product/categories",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"product",
+										"categories"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "comida",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getCategoryById",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenAdmin}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/product/category?id=47a0e85a-1372-47ff-a29c-43860a8eb174",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"product",
+										"category"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "47a0e85a-1372-47ff-a29c-43860a8eb174"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Bussines",
+			"item": [
+				{
+					"name": "Admin",
+					"item": [
+						{
+							"name": "getAll",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenAdmin}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"name\": \"venecia vieja\",\r\n    \"address\": \"sda\",\r\n    \"description\": \"asfg\",\r\n    \"logo\": \"sdasda\",\r\n    \"categories\": [\r\n        2,\r\n        1\r\n    ],\r\n    \"color\": \"asdaf\",\r\n    \"latitude\": 32132,\r\n    \"longitude\": 126321\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/businesses",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"businesses"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteBusiness",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenPartner1}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/business/?id",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"business",
+										""
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateStatus",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenAdmin}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"status\": \"Acepted\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/business/status?id=48b4dfbb-8e29-40de-a79f-a3891aba3939",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"business",
+										"status"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "48b4dfbb-8e29-40de-a79f-a3891aba3939"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Client",
+					"item": [
+						{
+							"name": "inZoneBusiness",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenUser1}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{host}}/business/nearby?latitude=25.667855&longitude=-100.33816",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"business",
+										"nearby"
+									],
+									"query": [
+										{
+											"key": "latitude",
+											"value": "25.667855"
+										},
+										{
+											"key": "longitude",
+											"value": "-100.33816"
+										},
+										{
+											"key": "categoryId",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Partner",
+					"item": [
+						{
+							"name": "createBusiness",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenPartner1}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "pizzeria test",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "comida rapida",
+											"type": "text"
+										},
+										{
+											"key": "businessLogo",
+											"type": "file",
+											"src": "/E:/Downloads/imagenes winapp/pizza logo.jpg"
+										},
+										{
+											"key": "businessBanner",
+											"type": "file",
+											"src": "/E:/Downloads/imagenes winapp/pizza banner.jpg"
+										},
+										{
+											"key": "address",
+											"value": "Constitución 1245, Mirador, 64070 Monterrey, N.L., México",
+											"type": "text"
+										},
+										{
+											"key": "longitude",
+											"value": "-100.33215841881625",
+											"type": "text"
+										},
+										{
+											"key": "latitude",
+											"value": "25.667754251662767",
+											"type": "text"
+										},
+										{
+											"key": "categoryId",
+											"value": "339be02f-edec-4941-9754-3209a00fea66",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}/business",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"business"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateBusiness",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenPartner2}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "burger king",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "competencia de mcdonalds- tambien es un restaurant",
+											"type": "text"
+										},
+										{
+											"key": "businessLogo",
+											"type": "file",
+											"src": "/E:/Downloads/picante .jpg"
+										},
+										{
+											"key": "businessBanner",
+											"type": "file",
+											"src": "/E:/Downloads/mac.png"
+										},
+										{
+											"key": "address",
+											"value": "la rioja 2746",
+											"type": "text"
+										},
+										{
+											"key": "longitude",
+											"value": "50",
+											"type": "text"
+										},
+										{
+											"key": "latitude",
+											"value": "100",
+											"type": "text"
+										},
+										{
+											"key": "categoryId",
+											"value": "f861d667-cb77-4b7a-90e2-a1f1d32366a2",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}/business?id=d99283cd-16f9-48d7-9eb4-16588f1183cc",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"business"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "d99283cd-16f9-48d7-9eb4-16588f1183cc"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteMyBusiness",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenPartner1}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/business/me",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"business",
+										"me"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getMyBusiness",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenPartner1}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/business/me",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"business",
+										"me"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "getById",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tokenAdmin}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"name\": \"venecia vieja\",\r\n    \"address\": \"sda\",\r\n    \"description\": \"asfg\",\r\n    \"logo\": \"sdasda\",\r\n    \"categories\": [\r\n        2,\r\n        1\r\n    ],\r\n    \"color\": \"asdaf\",\r\n    \"latitude\": 32132,\r\n    \"longitude\": 126321\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/business?id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"business"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Admin",
+					"item": [
+						{
+							"name": "getAllProducts",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenAdmin}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/products",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"products"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Client",
+					"item": [
+						{
+							"name": "getProductsNearby",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenUser1}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/products/nearby?latitude=25.667755&longitude=-100.33216&categoryId=ec60d3ad-b6b2-4dd3-8df9-df8d321a293e",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"products",
+										"nearby"
+									],
+									"query": [
+										{
+											"key": "latitude",
+											"value": "25.667755"
+										},
+										{
+											"key": "longitude",
+											"value": "-100.33216"
+										},
+										{
+											"key": "categoryId",
+											"value": "ec60d3ad-b6b2-4dd3-8df9-df8d321a293e"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getProductsByBusiness",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenUser1}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/products/business?id=212af6c8-7f68-4f3e-92e9-8923e785a625&categoryId=13d9343c-98ce-4d22-9668-585618cab2df",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"products",
+										"business"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "212af6c8-7f68-4f3e-92e9-8923e785a625"
+										},
+										{
+											"key": "categoryId",
+											"value": "13d9343c-98ce-4d22-9668-585618cab2df"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Partner",
+					"item": [
+						{
+							"name": "createProducts",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenPartner1}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "pizza caballo4",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "pizza con huevo y papas",
+											"type": "text"
+										},
+										{
+											"key": "productImage",
+											"type": "file",
+											"src": "/E:/Downloads/imagenes winapp/pizza.jpg"
+										},
+										{
+											"key": "unitPrice",
+											"value": "10",
+											"type": "text"
+										},
+										{
+											"key": "stock",
+											"value": "1000",
+											"type": "text"
+										},
+										{
+											"key": "categoryId",
+											"value": "632b684b-9ad7-49ec-ba1c-59e5b80752c2",
+											"type": "text"
+										},
+										{
+											"key": "addonsIds",
+											"value": "[]",
+											"description": "separar los ids con coma sin espacio entre ellos",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}/product",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"product"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteProduct",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenPartner1}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/product?id",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"product"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getMyBusinessProducts",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenPartner1}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/my-products",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"my-products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateProduct",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenPartner1}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "pizza 3",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "doble queso y salchicha",
+											"type": "text"
+										},
+										{
+											"key": "productImage",
+											"type": "file",
+											"src": "/E:/Downloads/imagenes winapp/pizza.jpg"
+										},
+										{
+											"key": "unitPrice",
+											"value": "15",
+											"type": "text"
+										},
+										{
+											"key": "stock",
+											"value": "1000",
+											"type": "text"
+										},
+										{
+											"key": "categoryId",
+											"value": "632b684b-9ad7-49ec-ba1c-59e5b80752c2",
+											"type": "text"
+										},
+										{
+											"key": "addonsIds",
+											"value": "[fc8a2703-b59f-4540-a0bf-7765c2675623,45ecfb11-1ae1-4d69-a4ab-c10560cd13a9]",
+											"description": "si la key no se envia o si el value es [] se eliminaran todos los addons",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}/product?id=7518a3ee-522c-4285-940c-17de13f82d2f",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"product"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "7518a3ee-522c-4285-940c-17de13f82d2f"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "getProductById",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tokenUser1}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/product?id=33e56163-96f4-4059-91df-74342b7fb825",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"product"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "33e56163-96f4-4059-91df-74342b7fb825"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Documents",
+			"item": [
+				{
+					"name": "Admin",
+					"item": [
+						{
+							"name": "getAll",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenAdmin}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/business/documents",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"business",
+										"documents"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getById",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenAdmin}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/business/document?id",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"business",
+										"document"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteDocument",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenAdmin}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/business/document?id",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"business",
+										"document"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Partner",
+					"item": [
+						{
+							"name": "uploadDocuments",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenPartner1}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "bankingCertified",
+											"type": "file",
+											"src": "/E:/Downloads/mac.png"
+										},
+										{
+											"key": "dni",
+											"type": "file",
+											"src": "/E:/Downloads/picante .jpg"
+										},
+										{
+											"key": "constitutiveAct",
+											"type": "file",
+											"src": "/E:/Downloads/picante .jpg"
+										},
+										{
+											"key": "attorneyPower",
+											"type": "file",
+											"src": "/E:/Downloads/picante .jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}/business/document",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"business",
+										"document"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "myDocuments (no implemented)",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenPartner1}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/business/documents/me",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"business",
+										"documents",
+										"me"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateDocuments (no implemented)",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenPartner1}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "bankingCertified",
+											"type": "file",
+											"src": []
+										},
+										{
+											"key": "dni",
+											"type": "file",
+											"src": []
+										},
+										{
+											"key": "constitutiveAct",
+											"type": "file",
+											"src": []
+										},
+										{
+											"key": "attorneyPower",
+											"type": "file",
+											"src": []
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}/business/document?id",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"business",
+										"document"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Subscriptions",
+			"item": [
+				{
+					"name": "Admin",
+					"item": [
+						{
+							"name": "getSubscriptions",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenAdmin}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/subscriptions",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"subscriptions"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Partner",
+					"item": [
+						{
+							"name": "getSubscribers",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenPartner1}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/subscriptions/business",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"subscriptions",
+										"business"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "incrementSubscriptionCredits",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenPartner1}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/subscription/credits?id=6229e38d-3478-44f3-b697-fdffd69186f4&credits=750",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"subscription",
+										"credits"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "6229e38d-3478-44f3-b697-fdffd69186f4"
+										},
+										{
+											"key": "credits",
+											"value": "750"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Client",
+					"item": [
+						{
+							"name": "getSubscription",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenUser1}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/subscription?id=6229e38d-3478-44f3-b697-fdffd69186f4",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"subscription"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "6229e38d-3478-44f3-b697-fdffd69186f4"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "createSubscription",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenUser1}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"businessId\":\"48b4dfbb-8e29-40de-a79f-a3891aba3939\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/subscription",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"subscription"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateSubscription",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenUser1}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"active\":false\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/subscription?id=6229e38d-3478-44f3-b697-fdffd69186f4",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"subscription"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "6229e38d-3478-44f3-b697-fdffd69186f4"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteSubscription",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenUser1}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/subscription?id",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"subscription"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getSubscriptions",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenUser1}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/me/subscriptions",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"me",
+										"subscriptions"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Address",
+			"item": [
+				{
+					"name": "Client",
+					"item": [
+						{
+							"name": "getAllAdress",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenUser1}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/adress",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"adress"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getAdressbyId",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenUser1}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/adress/?id",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"adress",
+										""
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "createAdress",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenUser1}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"address\": \"name\",\r\n    \"longitude\" :25,\r\n    \"latitude\": 25\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/adress",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"adress"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateAdress",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenUser1}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"address\": \"name\",\r\n    \"longitude\" :25,\r\n    \"latitude\": 25\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/adress/?id",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"adress",
+										""
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteAdress",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenUser1}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/adress/?id",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"adress",
+										""
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Rewards",
+			"item": [
+				{
+					"name": "Admin",
+					"item": [
+						{
+							"name": "getAll",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenAdmin}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/business/rewards",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"business",
+										"rewards"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Client",
+					"item": [
+						{
+							"name": "getNearbyRewards",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenUser1}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/rewards/nearby?latitude=100&longitude=200",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"rewards",
+										"nearby"
+									],
+									"query": [
+										{
+											"key": "latitude",
+											"value": "100"
+										},
+										{
+											"key": "longitude",
+											"value": "200"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Patner",
+					"item": [
+						{
+							"name": "getAll",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenPartner1}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/business/rewards",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"business",
+										"rewards"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getById",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenPartner1}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/reward?id=cf01e8a8-fb93-4c57-bc01-be80b5dd4a75",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"reward"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "cf01e8a8-fb93-4c57-bc01-be80b5dd4a75"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "createReward",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenPartner1}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "promo 50%",
+											"type": "text"
+										},
+										{
+											"key": "productQuantity",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "discount",
+											"value": "50",
+											"type": "text"
+										},
+										{
+											"key": "creditsCost",
+											"value": "100",
+											"type": "text"
+										},
+										{
+											"key": "productId",
+											"value": "3ce1768a-b93c-4616-ba3d-aab200fbc1c5",
+											"type": "text"
+										},
+										{
+											"key": "rewardImage",
+											"type": "file",
+											"src": "/E:/Downloads/mac.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}/reward",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"reward"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateReward",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenPartner1}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Promo 50%D",
+											"type": "text"
+										},
+										{
+											"key": "discount",
+											"value": "50",
+											"type": "text"
+										},
+										{
+											"key": "productQuantity",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "creditsCost",
+											"value": "1000",
+											"type": "text"
+										},
+										{
+											"key": "productId",
+											"value": "3ce1768a-b93c-4616-ba3d-aab200fbc1c5",
+											"type": "text"
+										},
+										{
+											"key": "rewardImage",
+											"type": "file",
+											"src": "/E:/Downloads/mac.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}/reward?id=52078850-c9fb-48d4-8524-0ea01fe31d9f",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"reward"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "52078850-c9fb-48d4-8524-0ea01fe31d9f"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteReward",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenPartner1}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/reward?id=709270fa-6787-4c37-9eb6-1e8e4eddae13",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"reward"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "709270fa-6787-4c37-9eb6-1e8e4eddae13"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Orders",
+			"item": [
+				{
+					"name": "Admin",
+					"item": [
+						{
+							"name": "getAlll",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenAdmin}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/orders",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"orders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getById",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenAdmin}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/order?id",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"order"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteOrder",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenAdmin}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/order?id",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"order"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Partner",
+					"item": [
+						{
+							"name": "New Request",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						},
+						{
+							"name": "getBusinessOrders",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenPartner1}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/business/orders",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"business",
+										"orders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getClientOrders",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenUser1}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/me/orders",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"me",
+										"orders"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Client",
+					"item": [
+						{
+							"name": "createOrder",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenUser1}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"totalPrice\": 30,\r\n    \"notes\": \"no necesariamente requerido\",\r\n    \"paymentId\": \"asdasdasd\",\r\n    \"businessId\": \"48b4dfbb-8e29-40de-a79f-a3891aba3939\",\r\n\r\n    \"productOrders\": [\r\n        {\r\n            \"productId\": \"5323170f-68c8-487a-b4f2-f4acf7aac73e\",\r\n            \"quantity\": 3\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/order",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"order"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Metrics(partner)",
+			"item": [
+				{
+					"name": "getMetrics",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/metrics?startDate&endDate",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"metrics"
+							],
+							"query": [
+								{
+									"key": "startDate",
+									"value": null
+								},
+								{
+									"key": "endDate",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reward Codes",
+			"item": [
+				{
+					"name": "Admin",
+					"item": [
+						{
+							"name": "deleteCode",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenAdmin}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/reward/code?id",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"reward",
+										"code"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Client",
+					"item": [
+						{
+							"name": "getCode",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenUser1}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/reward/code?id=286ecb16-37c7-4f4d-a769-5a06d018cdda",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"reward",
+										"code"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "286ecb16-37c7-4f4d-a769-5a06d018cdda"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetAllCodes",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenUser1}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/reward/codes",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"reward",
+										"codes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "buyRewardCode",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenUser1}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"rewardId\":\"52078850-c9fb-48d4-8524-0ea01fe31d9f\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/reward/code",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"reward",
+										"code"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "FavouriteBusiness (only Client)",
+			"item": [
+				{
+					"name": "getAll",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tokenUser1}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/favourite_businesses?active=true",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"favourite_businesses"
+							],
+							"query": [
+								{
+									"key": "active",
+									"value": "true",
+									"description": "si el valor de active es true solo muestra los favoritos que esten en true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tokenUser1}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/favourite_business?businessId=48b4dfbb-8e29-40de-a79f-a3891aba3939",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"favourite_business"
+							],
+							"query": [
+								{
+									"key": "businessId",
+									"value": "48b4dfbb-8e29-40de-a79f-a3891aba3939",
+									"description": "si el negocio favorito esta en false no lo devuelve y lo retornara como no encontrado"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create/activate7deactivate FacouriteBusines",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tokenUser1}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"businessId\":\"48b4dfbb-8e29-40de-a79f-a3891aba3939\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/favourite_business",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"favourite_business"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Addons",
+			"item": [
+				{
+					"name": "getAddons",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tokenAdmin}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/addons",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"addons"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAddonById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tokenUser1}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/addon?id=adfc28d8-2d33-47ee-8b53-250008c19bf5",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"addon"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "adfc28d8-2d33-47ee-8b53-250008c19bf5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createAddon",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tokenPartner1}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "papas grandes",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "papas fritas de tamaño grande",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "15",
+									"type": "text"
+								},
+								{
+									"key": "productImage",
+									"type": "file",
+									"src": "/E:/Downloads/imagenes winapp/papitas.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/addon",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"addon"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateAddon",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tokenPartner1}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "papas chicas",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "papas fritas de tamaño chico (100g)",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "productImage",
+									"type": "file",
+									"src": "/E:/Downloads/imagenes winapp/papitas.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/addon?id=adfc28d8-2d33-47ee-8b53-250008c19bf5",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"addon"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "adfc28d8-2d33-47ee-8b53-250008c19bf5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteAddon",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tokenPartner1}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/addon?id=adfc28d8-2d33-47ee-8b53-250008c19bf5",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"addon"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "adfc28d8-2d33-47ee-8b53-250008c19bf5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getMyBusinessAddons",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tokenPartner1}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/my-addons",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"my-addons"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

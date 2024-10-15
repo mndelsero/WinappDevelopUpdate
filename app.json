@@ -1,0 +1,59 @@
+{
+	"expo": {
+		"name": "Winap",
+		"slug": "winap-app",
+		"version": "1.0.0",
+		"orientation": "portrait",
+		"icon": "./assets/images/logo.png",
+		"scheme": "myapp",
+		"userInterfaceStyle": "light",
+		"splash": {
+			"image": "./assets/images/splash.png",
+			"resizeMode": "contain",
+			"backgroundColor": "#ffffff"
+		},
+		"ios": {
+			"supportsTablet": true
+		},
+		"android": {
+			"config": {
+				"googleMaps": {
+					"apiKey": "AIzaSyC-iNVk82tU2umpNXkKgBtBj17vyvkPiO4"
+				}
+			},
+			"adaptiveIcon": {
+				"foregroundImage": "./assets/images/adaptive-icon.png",
+				"backgroundColor": "#ffffff"
+			},
+			"package": "com.juaniseijas.venedicto1.Winap"
+		},
+		"web": {
+			"bundler": "metro",
+			"output": "static",
+			"favicon": "./assets/images/favicon.png"
+		},
+		"plugins": [
+			"expo-router",
+			"sentry-expo",
+			[
+				"@stripe/stripe-react-native",
+				{
+					"merchantIdentifier": "merchant.com.juaniseijas.venedicto1.Winap",
+					"enableGooglePay": true
+				}
+			]
+		],
+		"experiments": {
+			"typedRoutes": true,
+			"tsconfigPaths": true
+		},
+		"extra": {
+			"router": {
+				"origin": false
+			},
+			"eas": {
+				"projectId": "eb4a2074-412d-48e5-9279-8ea955947b56"
+			}
+		}
+	}
+}

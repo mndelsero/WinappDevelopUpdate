@@ -1,0 +1,61 @@
+{
+	"cli": {
+		"version": ">= 5.9.2"
+	},
+	"build": {
+		"development": {
+			"developmentClient": true,
+			"distribution": "internal"
+		},
+		"preview": {
+			
+			"env": {
+				"EXPO_PUBLIC_API_URL": "https://winap-re.up.railway.app",
+				"EXPO_PUBLIC_COURIER_CLIENT_KEY": "ck_prod_0a2b3c4d5e6f7g8h9i0j",
+				"EXPO_PUBLIC_SENTRY_DSN": "https://3946fed8752a31551d3fd949a864f1e7@o4506521334841344.ingest.sentry.io/4506521336872960",
+				"EXPO_PUBLIC_CLERK_PUSHEABLE_KEY": "pk_test_dG9nZXRoZXItbWF5Zmx5LTE5LmNsZXJrLmFjY291bnRzLmRldiQ",
+				"EXPO_PUBLIC_GOOGLE_API_KEY": "AIzaSyC-iNVk82tU2umpNXkKgBtBj17vyvkPiO4",
+				"EXPO_PUBLIC_SUPABASE_URL": "https://nskabxlhjggmvpxjqeie.supabase.co",
+				"EXPO_PUBLIC_SUPABASE_ANON": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5za2FieGxoamdnbXZweGpxZWllIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDkzMTk4MDEsImV4cCI6MjAyNDg5NTgwMX0.7Ju0fx4N5Pe2qGwwsEJ5hXpmuuXC3s-mgb2w7p2wvHQ",
+				"EXPO_PUBLIC_PREFIX": "9462"
+			},
+			"distribution": "internal"
+		},
+		"ios-prod": {
+			"ios": {
+				"autoIncrement": "buildNumber"
+			},
+			"channel": "production",
+			"env": {
+				"EXPO_PUBLIC_API_URL": "https://winap-backend-staging.up.railway.app",
+				"EXPO_PUBLIC_COURIER_CLIENT_KEY": "ck_prod_0a2b3c4d5e6f7g8h9i0j",
+				"EXPO_PUBLIC_SENTRY_DSN": "https://3946fed8752a31551d3fd949a864f1e7@o4506521334841344.ingest.sentry.io/4506521336872960",
+				"EXPO_PUBLIC_CLERK_PUSHEABLE_KEY": "pk_test_dG9nZXRoZXItbWF5Zmx5LTE5LmNsZXJrLmFjY291bnRzLmRldiQ",
+				"EXPO_PUBLIC_GOOGLE_API_KEY": "AIzaSyC-iNVk82tU2umpNXkKgBtBj17vyvkPiO4",
+				"EXPO_PUBLIC_SUPABASE_URL": "https://nskabxlhjggmvpxjqeie.supabase.co",
+				"EXPO_PUBLIC_SUPABASE_ANON": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5za2FieGxoamdnbXZweGpxZWllIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDkzMTk4MDEsImV4cCI6MjAyNDg5NTgwMX0.7Ju0fx4N5Pe2qGwwsEJ5hXpmuuXC3s-mgb2w7p2wvHQ",
+				"EXPO_PUBLIC_PREFIX": "9462"
+			}
+		},
+		"android-prod": {
+			"distribution": "internal",
+			"android": {
+				"autoIncrement": "versionCode"
+			},
+			"channel": "production",
+			"env": {
+				"EXPO_PUBLIC_API_URL": "https://winap-backend-staging.up.railway.app",
+				"EXPO_PUBLIC_COURIER_CLIENT_KEY": "ck_prod_0a2b3c4d5e6f7g8h9i0j",
+				"EXPO_PUBLIC_SENTRY_DSN": "https://3946fed8752a31551d3fd949a864f1e7@o4506521334841344.ingest.sentry.io/4506521336872960",
+				"EXPO_PUBLIC_CLERK_PUSHEABLE_KEY": "pk_test_dG9nZXRoZXItbWF5Zmx5LTE5LmNsZXJrLmFjY291bnRzLmRldiQ",
+				"EXPO_PUBLIC_GOOGLE_API_KEY": "AIzaSyC-iNVk82tU2umpNXkKgBtBj17vyvkPiO4",
+				"EXPO_PUBLIC_SUPABASE_URL": "https://nskabxlhjggmvpxjqeie.supabase.co",
+				"EXPO_PUBLIC_SUPABASE_ANON": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5za2FieGxoamdnbXZweGpxZWllIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDkzMTk4MDEsImV4cCI6MjAyNDg5NTgwMX0.7Ju0fx4N5Pe2qGwwsEJ5hXpmuuXC3s-mgb2w7p2wvHQ",
+				"EXPO_PUBLIC_PREFIX": "9462"
+			}
+		}
+	},
+	"submit": {
+		"production": {}
+	}
+}
