@@ -1,14 +1,118 @@
 import Input from "@/components/Input";
 import tw from "@/config/tw";
+import ApiService from "@/services/ApiService";
+import useCartStore from "@/store/useCartStore";
 import useGlobalStore from "@/store/useGlobalStore";
+import { Customization } from "@/utils/types";
+import { useAuth } from "@clerk/clerk-expo";
 import { Ionicons } from "@expo/vector-icons";
 import { Stack, useRouter } from "expo-router";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { personalizaciones } from "../(drawer)/(tabs)/(business)";
 
 export default function ShowOrder() {
+  const { getToken } = useAuth();
+  const { addItem, removeItem, count, changes, clear, items } = useCartStore();
+  const [personalizacionesPedido, setPersonalizacionesPedido] = useState<{ [key: string]: Customization[] }>({});
+  useEffect(() => {
+    const actualizarPersonalizaciones = () => {
+      let nuevasPersonalizaciones: { [key: string]: Customization[] } = {};
+      traerAddons()
+
+      // Recorrer todos los items del carrito
+      items.forEach(item => {
+        const keys = Object.keys(item.selectedTasksPersonalizaciones);
+        let personalizacionPedido: Customization[] = [];
+
+        // Recorrer las claves y encontrar las personalizaciones correspondientes
+        keys.forEach(key => {
+          const encontrado = personalizaciones.find(elemento => elemento.id == key);
+          if (encontrado) {
+            personalizacionPedido.push(encontrado);
+          }
+        });
+
+        // Almacenar las personalizaciones para este producto
+        nuevasPersonalizaciones[item.product.name] = personalizacionPedido;
+
+      });
+
+      // Actualizar el estado con las nuevas personalizaciones
+      setPersonalizacionesPedido(nuevasPersonalizaciones);
+      personalizacionesPedido
+    };
+
+    // Ejecutar la función de actualización al montar el componente
+    actualizarPersonalizaciones();
+
+  }, [items]); // Se vuelve a ejecutar si los items cambian
+  const traerAddons = async () => {
+
+    try {
+      const token = await getToken();
+      if (token === null) {
+        throw new Error("No token");
+      }
+      const service = new ApiService();
+      return service.getAddonsById(token)
+      console.log()
+    } catch (error) {
+      console.error("Error fetching categories:", error);
+    }
+  };
+
+  const totalPrice = (items.reduce((total, item) => {
+    return total + item.product.unitPrice * item.count;
+  }, 0)) * 1.05;
+
+
+  const enviarPedido = async () => {
+    const token = await getToken();
+    if (token === null) {
+      throw new Error("No token");
+    }
+    console.log("negocio id: ", items[0].product.businessId)
+
+    console.log("precio total: ", totalPrice)
+
+    let productOrders = items.map((item) => {
+      return {
+        productId: item.product.id,
+        quantity: item.count,
+        productOrderAddons: item.product.addons.map((addon) => {
+          return {
+            addonId: addon.id,
+          }
+        })
+      }
+    })
+
+    const order = {
+
+      "totalPrice": totalPrice, //agregar al precio total un 5% de comision (MULTIPLICAR EL PRECIO TOTAL POR 1.05)
+      "notes": "no necesariamente requerido",
+      "paymentId": "asdasdasd",
+      "businessId": items[0].product.businessId,
+
+      "productOrders": productOrders,
+    }
+
+
+    const service = new ApiService();
+    return service.createOrder(order, token)
+
+
+
+
+
+  }
+
+
+
+
   const router = useRouter();
   const { location, setSelectedBusiness } = useGlobalStore();
 
@@ -59,28 +163,80 @@ export default function ShowOrder() {
               </View>
               <Input placeholder="Prioridad standar" />
             </View>
-            <View style={tw`flex flex-col  my-4 mx-1`}>
-              <Text style={tw`text-gray-800 text-lg`}>Usar un regalo</Text>
-              <Input placeholder="código" />
-              <Text style={tw`text-gray-800 text-lg`}>Tus  Productos</Text>
-              <Text style={tw`text-gray-800 text-sm mx-2 mt-4`}>10  Pizzas mozzarella grande</Text>
-              <Text style={tw`text-gray-800 text-sm mx-2 underline mt-2`}>Agregar más productos</Text>
 
-            </View>
-            <View style={tw`flex flex-row justify-between items-center my-4`}>
-              <Text style={tw`text-gray-500 text-lg`}>SubTotal</Text>
-              <Text style={tw`text-gray-500 text-lg`}>10 $</Text>
-            </View>
-            <View style={tw`flex flex-row justify-between items-center `}>
-              <Text style={tw`text-gray-500 text-lg`}>Servicios</Text>
-              <Text style={tw`text-gray-500 text-lg`}>5 $</Text>
-            </View>
-            <View style={tw`flex flex-row justify-between items-center my-4`}>
-              <Text style={tw`text-gray-800 text-lg`}>Total</Text>
-              <Text style={tw`text-gray-800 text-lg`}>15 $</Text>
-            </View>
-            
-              <Text style={tw`text-gray-500 text-lg mt-5`}>Método de pago</Text>
+            <ScrollView>
+
+              <Text style={tw`text-gray-800 text-lg`}>Tus  Productos</Text>
+              {
+                items.map((item) => (
+
+                  <TouchableOpacity
+
+
+                    style={tw`flex flex-row justify-between  border-b border-gray-300 py-6`}
+                    key={item.product.name}
+                  >
+                    <View style={tw`flex flex-col w-2/4`}>
+                      <Text style={tw` flex flex-col text-gray-800 text-lg`}>{item.count} {item.product.name} {item.product.description}  </Text>
+
+                      {personalizacionesPedido[item.product.name]?.map((personalizacion, index) => (
+                        <View
+                          key={index}
+                          style={tw`flex flex-row w-auto justify-between`}>
+                          <Text style={tw`text-gray-400 text-sm`}>
+                            {personalizacion.name}
+                          </Text>
+                          <Text style={tw`text-gray-400 text-sm`}>
+                            {personalizacion.price} $
+                          </Text>
+                        </View>
+
+
+                      ))}
+
+
+
+
+                    </View>
+                    <View
+                      style={tw`flex flex-col items-end justify-between w-2/5  `}
+                    >
+                      <Text style={tw`text-gray-800 text-lg mr-2`}>
+                        Subtotal: {(item.product.unitPrice) * item.count} $
+                      </Text>
+
+
+                    </View>
+
+
+                  </TouchableOpacity>
+
+
+                ))
+              }
+              <View
+                style={tw`flex flex-col items-end justify-end w-5/5  `}
+              >
+                <Text style={tw`text-gray-800 text-lg mr-2 w-2/5`}>
+                  + Servicios (0.05%) $ =
+                </Text>
+
+
+              </View>
+
+
+              <Text style={tw`text-gray-800 text-lg`}>Total: {totalPrice * 1.05
+              } $
+              </Text>
+
+
+
+
+
+            </ScrollView>
+
+
+            <Text style={tw`text-gray-500 text-lg mt-5`}>Método de pago</Text>
             <View style={tw`flex flex-row justify-between items-center my-4 border-b border-gray-300`}>
               <View style={tw`flex flex-row items-center gap-2`}>
                 <Ionicons name="card" style={tw`text-lg text-primary`} />
@@ -91,12 +247,16 @@ export default function ShowOrder() {
             </View>
             <TouchableOpacity>
 
-            <Text style={tw`text-gray-500 text-lg mt-5 underline`}>Agregar otro método de pago</Text>
+              <Text style={tw`text-gray-500 text-lg mt-5 underline`}>Agregar otro método de pago</Text>
             </TouchableOpacity>
 
-           
+
             <TouchableOpacity
-              onPress={() => router.push("/(authed)/(payment)/LoadingOrder")}
+              onPress={
+                () => {
+                  router.push("/(authed)/(payment)/LoadingOrder")
+                  enviarPedido()
+                }}
               style={tw`bg-primary w-10/12 p-3 my-6 rounded-full flex justify-center items-center mx-auto shadow-lg`}
             >
               <Text style={tw`text-white text-lg`}>Realizar pedido</Text>

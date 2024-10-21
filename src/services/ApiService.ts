@@ -23,62 +23,62 @@ export default class ApiService {
 
 
 
-	async existCode(id: number, user_id: string): Promise<any | null> {
-		const { data, error } = await this.client
-			.from("GeneratedCodes")
-			.select("*")
-			.eq("discount_code_id", id)
-			.eq("user_id", user_id)
-			.eq("active", true);
+	// async existCode(id: number, user_id: string): Promise<any | null> {
+	// 	const { data, error } = await this.client
+	// 		.from("GeneratedCodes")
+	// 		.select("*")
+	// 		.eq("discount_code_id", id)
+	// 		.eq("user_id", user_id)
+	// 		.eq("active", true);
 
-		if (error) {
-			console.log(error);
-			throw error;
-		}
+	// 	if (error) {
+	// 		console.log(error);
+	// 		throw error;
+	// 	}
 
-		if (data.length > 0) {
-			const expireAt = new Date(data[0].expireAt);
-			const hasExpire = expireAt < new Date();
-			if (hasExpire) {
-				await this.client
-					.from("GeneratedCodes")
-					.update({ active: false })
-					.eq("id", data[0].id);
-				return null;
-			}
+	// 	if (data.length > 0) {
+	// 		const expireAt = new Date(data[0].expireAt);
+	// 		const hasExpire = expireAt < new Date();
+	// 		if (hasExpire) {
+	// 			await this.client
+	// 				.from("GeneratedCodes")
+	// 				.update({ active: false })
+	// 				.eq("id", data[0].id);
+	// 			return null;
+	// 		}
 
-			return data[0];
-		}
+	// 		return data[0];
+	// 	}
 
-		return null;
-	}
-	async generateQrCode(id: number) {
-		console.log(id);
-		const { data, error } = await this.client
-			.from("GeneratedCodes")
-			.insert([{ discount_code_id: id }])
-			.returns()
-			.select("*");
-		if (error) {
-			console.log(error);
-			throw error;
-		}
+	// 	return null;
+	// }
+	// async generateQrCode(id: number) {
+	// 	console.log(id);
+	// 	const { data, error } = await this.client
+	// 		.from("GeneratedCodes")
+	// 		.insert([{ discount_code_id: id }])
+	// 		.returns()
+	// 		.select("*");
+	// 	if (error) {
+	// 		console.log(error);
+	// 		throw error;
+	// 	}
 
-		const qr = await fetch(
-			"https://nskabxlhjggmvpxjqeie.supabase.co/functions/v1/winap-generate-qr",
-			{
-				method: "POST",
-				headers: { Authorization: `Bearer ${API_URL}` },
-				body: JSON.stringify({ code_id: data[0].id }),
-			},
-		);
-		const qrData = await qr.json();
+	// 	const qr = await fetch(
+	// 		"https://nskabxlhjggmvpxjqeie.supabase.co/functions/v1/winap-generate-qr",
+	// 		{
+	// 			method: "POST",
+	// 			headers: { Authorization: `Bearer ${API_URL}` },
+	// 			body: JSON.stringify({ code_id: data[0].id }),
+	// 		},
+	// 	);
+	// 	const qrData = await qr.json();
 
-		return qrData;
-	}
+	// 	return qrData;
+	// }
 
 	async getBusinesses(address: string, token: string): Promise<BusinessResponse> {
-		
+
 		const near = await fetch(
 			`https://nskabxlhjggmvpxjqeie.supabase.co/functions/v1/business-by-address?address=${address}`,
 			{
@@ -93,26 +93,26 @@ export default class ApiService {
 		return data.near.filter((business: any) => !!business);
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	async getProducts(businessId: number): Promise<ProductResponse> {
-		const { data, error } = await this.client
-			.from("Products")
-			.select("*")
-			.eq("business_id", businessId);
 
-		if (error) {
-			console.log(error);
-			throw error;
-		}
-		return data;
-	} 
+
+
+
+
+
+
+
+	// async getProducts(businessId: number): Promise<ProductResponse> {
+	// 	const { data, error } = await this.client
+	// 		.from("Products")
+	// 		.select("*")
+	// 		.eq("business_id", businessId);
+
+	// 	if (error) {
+	// 		console.log(error);
+	// 		throw error;
+	// 	}
+	// 	return data;
+	// } 
 
 
 
@@ -223,99 +223,84 @@ export default class ApiService {
 		}
 	}
 
-	async getDiscounts(
-		businessId: number,
-		type: "award" | "gift",
-		// biome-ignore lint/suspicious/noExplicitAny: <explanation>
-	): Promise<Award[] | any> {
-		if (type === "award") {
-			const { data, error } = await this.client
-				.from("DiscountCodes")
-				.select("* Products(*)")
-				.eq("business_id", businessId)
-				.neq("point_cost", 0);
-			if (error) {
-				console.log(error);
-				throw error;
+	// async getDiscounts(
+	// 	businessId: number,
+	// 	type: "award" | "gift",
+	// 	// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+	// ): Promise<Award[] | any> {
+	// 	if (type === "award") {
+	// 		const { data, error } = await this.client
+	// 			.from("DiscountCodes")
+	// 			.select("* Products(*)")
+	// 			.eq("business_id", businessId)
+	// 			.neq("point_cost", 0);
+	// 		if (error) {
+	// 			console.log(error);
+	// 			throw error;
+	// 		}
+	// 		return data;
+	// 	}
+
+	// 	const { data, error } = await this.client
+	// 		.from("DiscountCodes")
+	// 		.select("* Products(*)")
+	// 		.eq("business_id", businessId)
+	// 		.eq("point_cost", 0);
+
+	// 	if (error) {
+	// 		console.log(error);
+	// 		throw error;
+	// 	}
+	// 	return data;
+	// }
+
+	// async getOrders(userId: string, status: Status[], business_id: number) {
+	// 	return fetch(
+	// 		"https://",
+	// 		{
+	// 			method: "POST",
+	// 			headers: {
+	// 				Authorization: `Bearer ${API_URL}`,
+	// 				"Content-Type": "application/json",
+	// 			},
+	// 			body: JSON.stringify({ user_id: userId, status, business_id }),
+	// 		},
+	// 	).then((res) => res.json());
+	// }
+
+	async createOrder(order: any, token: any) {
+
+		try {
+			console.log('antes de mandarse la suscripcion', order);
+
+			const response = await fetch(
+				`${API_URL}/order`,
+				{
+					method: "POST",
+					headers: {
+						Authorization: `Bearer ${token}`,
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify(order),
+				})
+			console.log(response.status)
+			const result = await response.json()
+			const ordered: any = result.data.order
+			console.log(ordered)
+
+			if (!response.ok) {
+				// Manejar errores HTTP
+				const errorData = await response.json();
+				console.error('Error en la suscripción:', errorData);
+				throw new Error(`Error ${response.status}: ${response.statusText}`);
 			}
-			return data;
-		}
 
-		const { data, error } = await this.client
-			.from("DiscountCodes")
-			.select("* Products(*)")
-			.eq("business_id", businessId)
-			.eq("point_cost", 0);
-
-		if (error) {
+			return response.json();
+		} catch (error) {
 			console.log(error);
 			throw error;
 		}
-		return data;
-	}
 
-	async getOrders(userId: string, status: Status[], business_id: number) {
-		return fetch(
-			"https://",
-			{
-				method: "POST",
-				headers: {
-					Authorization: `Bearer ${API_URL}`,
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify({ user_id: userId, status, business_id }),
-			},
-		).then((res) => res.json());
-	}
-
-	async generateOrder({
-		totalPrice,
-		products,
-		status,
-		quantity,
-		notes,
-		user_id,
-		business_id,
-	}: {
-		totalPrice: number;
-		products: {
-			product_id: string;
-			product_name: string;
-			product_price: number;
-			product_description: string;
-		}[];
-		status: number;
-		quantity: number;
-		notes: string;
-		user_id: string;
-		business_id: number;
-	}): Promise<any> {
-		const order = {
-			totalPrice,
-			products,
-			status,
-			quantity,
-			notes,
-			user_id,
-			business_id,
-		};
-
-		console.log(order);
-
-		return fetch(
-			"https://nskabxlhjggmvpxjqeie.supabase.co/functions/v1/winap-generate-orders",
-			{
-				method: "POST",
-				headers: {
-					Authorization: `Bearer ${API_URL}`,
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify(order),
-			},
-		).then((res) => {
-			console.log(res);
-			return res.json();
-		});
 	}
 
 
@@ -427,30 +412,30 @@ export default class ApiService {
 	// obtener addons de producto con id de addon
 
 
-async getAddonsById(
-	 token: string,
-) {
-	try {
-		const response = await fetch(`${API_URL}/addon?id=56e2d247-97f8-4008-ac6f-a51c06f66dbc`, {
-			headers: {
-				Authorization: `Bearer ${token}`,
-			},
-		});
+	async getAddonsById(
+		token: string,
+	) {
+		try {
+			const response = await fetch(`${API_URL}/addon?id=56e2d247-97f8-4008-ac6f-a51c06f66dbc`, {
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
+			});
 
-		const data = await response.json();
-		console.log("response", data.data);
+			const data = await response.json();
+			console.log("response", data.data);
 
-		if (data && data.status === "success") {
-			return data;
-		}
-	} catch (error) {
-		if (error instanceof SyntaxError) {
-			console.error('Invalid JSON response:', error);
-		} else {
-			console.error('Other error:', error);
+			if (data && data.status === "success") {
+				return data;
+			}
+		} catch (error) {
+			if (error instanceof SyntaxError) {
+				console.error('Invalid JSON response:', error);
+			} else {
+				console.error('Other error:', error);
+			}
 		}
 	}
-}
 
 
 	// obtener addons de producto con id de producto
@@ -465,10 +450,10 @@ async getAddonsById(
 					Authorization: `Bearer ${token}`,
 				},
 			});
-	
+
 			const data = await response.json();
 			console.log("response", data.data);
-	
+
 			if (data && data.status === "success") {
 				return data;
 			}

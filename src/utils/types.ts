@@ -47,7 +47,7 @@ export type Product = {
 	createdAt: string;
 	updatedAt: string;
 	deletedAt: string;
-	addons:Array<T>;
+	addons:Array<Customization>;
 	
 };
 
