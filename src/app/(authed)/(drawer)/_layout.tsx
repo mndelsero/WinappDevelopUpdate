@@ -48,7 +48,7 @@ const CustomDrawerContent = (props: DrawerContentComponentProps) => {
         <CustomDrawerItem label="Mi Perfil" navigationPath="/(authed)/(drawer)/(tabs)/(profile)" />
         <CustomDrawerItem label="Mis Recompensas" navigationPath="/(authed)/(drawer)/(tabs)/(profile)/rewards" />
         <CustomDrawerItem label="Regalos" navigationPath="/(authed)/(drawer)/(tabs)/(profile)/gifts" />
-        <CustomDrawerItem label="favoritos" navigationPath="/(authed)/(drawer)/(tabs)/(profile)/favorites" />
+        <CustomDrawerItem label="Favoritos" navigationPath="/(authed)/(drawer)/(tabs)/(profile)/favorites" />
       </View>
 
 	  <View style={tw`flex flex-col justify-between `}>

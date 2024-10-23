@@ -5,6 +5,7 @@ import {
   TouchableWithoutFeedback,
   ActivityIndicator,
   SafeAreaView,
+  Platform,
 } from "react-native";
 import React, { useEffect, useState, useRef } from "react";
 import tw from "@/config/tw";
@@ -50,6 +51,7 @@ export default function Home() {
 
   /*  ===============  Obtener la ubicación del usuario =============== */
   useEffect(() => {
+    
     if (location.displayName !== "") {
       ref.current?.animateCamera({
         center: {
@@ -155,7 +157,7 @@ export default function Home() {
         <View style={tw`h-50vh flex-col w-full z-3  `}>
 
           <MapView
-            provider={PROVIDER_GOOGLE}
+            provider={Platform.OS === "android" ? PROVIDER_GOOGLE : undefined}
             ref={ref}
             style={tw` h-50vh w-full`}
           >
@@ -245,7 +247,7 @@ export default function Home() {
 
 
                 <View style={tw` tablet:mt-10 flex gap-10rem tablet:gap-5  px-1`}>
-                  {filteredNegocios?.map((business: Business) => (
+                  {filteredNegocios?.map((business: Business, index) => (
                     <TouchableOpacity
                       onPress={() => {
                         console.log(business.distance)
@@ -255,7 +257,10 @@ export default function Home() {
                       }}
                       activeOpacity={0.5}
                       key={business.id}
-                      style={tw`w-full  h-25 rounded-xl bg-white flex-row flex items-center justify-between  my-2 shadow-md  `}
+                      style={[
+                        tw`w-full h-25 rounded-xl bg-white flex-row items-center justify-between shadow-md`,
+                        index === 0 ? tw`my-0` : tw`mt-[-115px]` 
+                      ]}
                     >
                       <View style={tw`flex flex-col h-38 w-3/6 py-8  px-2`}>
                         <View style={tw`flex flex-col items-start `}>

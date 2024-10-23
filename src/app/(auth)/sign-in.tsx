@@ -5,7 +5,7 @@ import Input from "@/components/Input";
 import { Ionicons } from "@expo/vector-icons";
 import * as yup from "yup";
 import { toast } from "@backpackapp-io/react-native-toast";
-import { useSignIn } from "@clerk/clerk-expo";
+import { useAuth, useSignIn } from "@clerk/clerk-expo";
 import { useRouter } from "expo-router";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { useFormik } from "formik";
@@ -30,9 +30,10 @@ interface SignInData {
 }
 
 export default function SignInScreen() {
-  const { isLoaded, signIn, setActive } = useSignIn();
+  const { isLoaded, signIn, setActive  } = useSignIn();
   const [loading, setLoading] = React.useState(false);
   const router = useRouter();
+  const { isSignedIn,signOut, getToken, userId } = useAuth();
   const [isChecked, setChecked] = useState(false);
 
   // const {
@@ -55,8 +56,8 @@ export default function SignInScreen() {
     validateField,
   } = useFormik({
     initialValues: {
-      email: "superadmin@gmail.com",
-      password: "superadmin",
+      email: "mndelsero@gmail.com",
+      password: "12345678QA",
     },
     validationSchema: schema,
     onSubmit: async (values) => {
@@ -65,28 +66,36 @@ export default function SignInScreen() {
   });
 
   const onSubmit = async (data: SignInData) => {
-    try {
-      if (!isLoaded) {
-        return;
-      }
-      setLoading(true);
-      const result = await signIn.create({
-        identifier: data.email,
-        password: data.password,
-      });
-
-      if (result?.status === "complete") {
-        toast.success("Inicio de sesión exitoso");
-        await setActive({ session: result.createdSessionId });
-        router.push("/(auth)/");
+    if(!isSignedIn){
+      try {
+        if (!isLoaded) {
+          return;
+        }
+        setLoading(true);
+  
+        
+        const result = await signIn.create({
+          identifier: data.email,
+          password: data.password,
+        });
+  
+        if (result?.status === "complete") {
+          toast.success("Inicio de sesión exitoso");
+          await setActive({ session: result.createdSessionId });
+          router.replace("/(authed)/(location)/(tabs)/(home)");
+          setLoading(false);
+          return;
+        }
+      } catch (e) {
+        console.log();
+        toast.error("Creedenciales incorrectas");
         setLoading(false);
-        return;
       }
-    } catch (e) {
-      console.log();
-      toast.error("Creedenciales incorrectas");
-      setLoading(false);
+    }else{ router.push("/(authed)/(drawer)/(tabs)/(home)");
+
     }
+
+  
   };
 
   return (

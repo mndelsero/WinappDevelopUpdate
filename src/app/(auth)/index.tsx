@@ -11,7 +11,7 @@ import useGlobalStore from "@/store/useGlobalStore";
 export default function IndexScreen() {
 	const router = useRouter();
 	const [loading, setLoading] = React.useState(true);
-	const { isSignedIn, isLoaded, getToken, userId } = useAuth();
+	const { isSignedIn,signOut, isLoaded, getToken, userId } = useAuth();
 	const { setSelectedBusiness } = useGlobalStore();
 
 	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
@@ -28,6 +28,7 @@ export default function IndexScreen() {
 			}
 		})();
 	}, [isLoaded, isSignedIn]);
+
 
 	return (
 		<View style={tw` h-full flex  items-center justify-center bg-primary`}>
