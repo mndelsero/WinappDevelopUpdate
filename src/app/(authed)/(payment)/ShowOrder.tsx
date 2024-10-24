@@ -14,6 +14,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { personalizaciones } from "../(drawer)/(tabs)/(business)";
 
 export default function ShowOrder() {
+  const { waitingOrderNow, setWaitingOrderNow } = useGlobalStore()
   const { getToken } = useAuth();
   const { addItem, removeItem, count, changes, clear, items } = useCartStore();
   const [personalizacionesPedido, setPersonalizacionesPedido] = useState<{ [key: string]: Customization[] }>({});
@@ -58,7 +59,7 @@ export default function ShowOrder() {
       }
       const service = new ApiService();
       return service.getAddonsById(token)
-      console.log()
+
     } catch (error) {
       console.error("Error fetching categories:", error);
     }
@@ -74,39 +75,39 @@ export default function ShowOrder() {
     if (token === null) {
       throw new Error("No token");
     }
-    console.log("negocio id: ", items[0].product.businessId)
 
-    console.log("precio total: ", totalPrice)
 
     let productOrders = items.map((item) => {
       return {
-        productId: item.product.id,
-        quantity: item.count,
-        productOrderAddons: item.product.addons.map((addon) => {
-          return {
-            addonId: addon.id,
-          }
-        })
+        "productId": item.product.id,
+        "quantity": item.count,
+        "productOrderAddons": {
+          "id": personalizacionesPedido.id,
+          "quantity": 1
+        }
       }
     })
 
     const order = {
 
-      "totalPrice": totalPrice, //agregar al precio total un 5% de comision (MULTIPLICAR EL PRECIO TOTAL POR 1.05)
-      "notes": "no necesariamente requerido",
-      "paymentId": "asdasdasd",
-      "businessId": items[0].product.businessId,
+      totalPrice: totalPrice, //agregar al precio total un 5% de comision (MULTIPLICAR EL PRECIO TOTAL POR 1.05)
+      notes: "no necesariamente requerido",
+      paymentId: "asdasdasd",
+      businessId: items[0].product.businessId,
 
-      "productOrders": productOrders,
+      productOrders: productOrders,
     }
 
-
-    const service = new ApiService();
-    return service.createOrder(order, token)
+    if (order) {
 
 
+      const service = new ApiService();
+      const waitingOrder = await service.createOrder(order, token)
+      console.log(waitingOrder)
+      setWaitingOrderNow(waitingOrder)
+      router.push("/(authed)/(payment)/LoadingOrder")
 
-
+    }
 
   }
 
@@ -254,8 +255,9 @@ export default function ShowOrder() {
             <TouchableOpacity
               onPress={
                 () => {
-                  router.push("/(authed)/(payment)/LoadingOrder")
                   enviarPedido()
+
+
                 }}
               style={tw`bg-primary w-10/12 p-3 my-6 rounded-full flex justify-center items-center mx-auto shadow-lg`}
             >

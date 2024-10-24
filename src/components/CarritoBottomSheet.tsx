@@ -77,7 +77,7 @@ export const CarritoBottomSheet = ({ productosCarrito, CarritobottomSheetRef }: 
         }
         const service = new ApiService();
         return service.getAddonsById(token)
-        console.log()
+       
       } catch (error) {
         console.error("Error fetching categories:", error);
       }

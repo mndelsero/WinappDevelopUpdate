@@ -42,7 +42,7 @@ export const PedidoBottomSheet = ({ selectProductItem,personalizaciones, selecte
       }
       const service = new ApiService();
       return service.getAddonsById(token)
-      console.log()
+     
     } catch (error) {
       console.error("Error fetching categories:", error);
     }
@@ -159,7 +159,7 @@ export const PedidoBottomSheet = ({ selectProductItem,personalizaciones, selecte
                   onPress={() => {
                     if (count > 1) {
                       setCount(count - 1);
-                      console.log("restado")
+                     
 
                     }
                   }}
@@ -182,7 +182,7 @@ export const PedidoBottomSheet = ({ selectProductItem,personalizaciones, selecte
                     console.log(selectProductItem)
                     if (count < selectProductItem?.stock) {
                       setCount(count + 1);
-                      console.log("sumado")
+                    
                     }
                   }}
                 >

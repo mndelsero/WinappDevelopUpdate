@@ -4,7 +4,7 @@ import { Image, Text, TouchableOpacity, View } from 'react-native'
 
 
 export const ListProduct = ({item, setSheetIndex= null}) => {
-  console.log(item)
+ 
   return (
     <TouchableOpacity
     onPress={() => setSheetIndex ?  setSheetIndex(item) : {}}

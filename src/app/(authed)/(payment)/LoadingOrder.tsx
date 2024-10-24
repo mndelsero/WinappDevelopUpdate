@@ -1,9 +1,11 @@
 import Input from "@/components/Input";
 import tw from "@/config/tw";
+import ApiService from "@/services/ApiService";
 import useGlobalStore from "@/store/useGlobalStore";
+import { useAuth } from "@clerk/clerk-expo";
 import { Ionicons } from "@expo/vector-icons";
 import { Stack, useRouter } from "expo-router";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { ActivityIndicator, Text, TouchableOpacity, View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -12,10 +14,13 @@ export default function LoadingOrder() {
   const router = useRouter();
   const { location, setSelectedBusiness } = useGlobalStore();
 
-    
+
   useEffect(() => { // Paso 2
     const timer = setTimeout(() => { // Paso 3
-        router.push("/(authed)/(payment)/PreparingOrder");
+
+
+
+      router.push("/(authed)/(payment)/PreparingOrder");
 
     }, 5000);
 
@@ -28,16 +33,16 @@ export default function LoadingOrder() {
       <Stack.Screen options={{ headerShown: false }} />
       <SafeAreaView>
         <View style={tw`bg-white h-full relative`}>
-          
+
           <ScrollView style={tw`mt-10 px-4`}>
             <View style={tw`flex flex-row justify-between items-center `}>
-                <Text style={tw`text-gray-800 text-xl font-bold`}>
-                    Cargando tu pedido
-                </Text>
-                <ActivityIndicator color={tw.color("primary")} size="large" />
+              <Text style={tw`text-gray-800 text-xl font-bold`}>
+                Cargando tu pedido
+              </Text>
+              <ActivityIndicator color={tw.color("primary")} size="large" />
             </View>
-            
-            <View style={tw`flex flex-row items-center  mt-20 ` }>
+
+            <View style={tw`flex flex-row items-center  mt-20 `}>
               <Ionicons name="checkmark" style={tw`text-xl text-primary`} />
               <Text
                 style={tw.style(
@@ -74,13 +79,13 @@ export default function LoadingOrder() {
                 <Text style={tw`text-gray-800 text-lg`}>10</Text>
 
               </View>
-                <Text style={tw`text-gray-800 text-lg`}>Pizza mozzarella Doble</Text>
+              <Text style={tw`text-gray-800 text-lg`}>Pizza mozzarella Doble</Text>
             </View>
-           
+
             <TouchableOpacity
-                onPress={() => {
-                    router.push("/(authed)/(payment)/ShowOrder");
-                }}
+              onPress={() => {
+                router.push("/(authed)/(payment)/ShowOrder");
+              }}
               style={tw`bg-[#e10101] w-10/12 p-3 my-6 rounded-full flex justify-center items-center mx-auto shadow-lg`}
             >
               <Text style={tw`text-white text-lg`}>Cancelar pedido</Text>

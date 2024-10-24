@@ -18,7 +18,7 @@ import HomeHeader from "@/components/HomeHeader";
 import { Ionicons } from "@expo/vector-icons";
 
 
-const CustomDrawerItem = ({ label, navigationPath }) => {
+const CustomDrawerItem = ({ label, navigationPath }:{label:any, navigationPath:any}) => {
   const router = useRouter();
 
   return (

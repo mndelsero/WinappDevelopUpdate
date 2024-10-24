@@ -433,7 +433,7 @@ export default function HomeTabs() {
   useEffect(() => {
     if (productsData && productsData.status === "success") {
       const { products } = productsData.data;
-      console.log("PRODUCTOS", products.length);
+      
       setProductos(products);
     }
   }, [productsData]);
@@ -501,7 +501,7 @@ export default function HomeTabs() {
   }, []);
 
   /* ====================================Obtener Suscripciones===============================  */
-  console.log("RELOAD", pathname);
+
   const {
     data: subscriptionsData,
     isFetching: isFetchingSubscriptions,
@@ -543,7 +543,7 @@ export default function HomeTabs() {
         });
       }
 
-      console.log("esta es la susbcripcion mas larga ");
+     
     }
   }, [subscriptionsData]);
 
@@ -579,7 +579,7 @@ export default function HomeTabs() {
       const response = await service.subscribe(selectedBusiness.id, token);
 
       setReload(!reload);
-      console.log("Respuesta de suscripción", response);
+     
     } catch (error) {
       console.error("Error en la suscripción:", error);
       toast.error("Error en la suscripción");
@@ -790,13 +790,13 @@ export default function HomeTabs() {
               </View>
               {activeSubscription && (
                 <View
-                  style={tw`flex flex-row  w-10/12 bg-primary rounded-b-lg p-4 shadow-lg gap-2`}
+                  style={tw`flex flex-row  w-10/12 bg-primary rounded-b-lg p-4 shadow-lg gap-2 items-center justify-center`}
                 >
-                  <Text style={tw`text-white text-lg`}>tus puntos:</Text>
+                  <Text style={tw`text-white text-lg`}>Tus puntos:</Text>
                   <Text style={tw`text-white text-3xl font-black`}>
                     {dataSubscription?.credits}
                   </Text>
-                  <Text style={tw`text-white text-lg`}>créditos</Text>
+                  <Text style={tw`text-white text-lg`}>Créditos</Text>
                 </View>
               )}
             </View>

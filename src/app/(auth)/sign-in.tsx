@@ -82,7 +82,7 @@ export default function SignInScreen() {
         if (result?.status === "complete") {
           toast.success("Inicio de sesión exitoso");
           await setActive({ session: result.createdSessionId });
-          router.replace("/(authed)/(location)/(tabs)/(home)");
+          router.push("/(authed)/(location)/(tabs)/(home)");
           setLoading(false);
           return;
         }
@@ -91,7 +91,7 @@ export default function SignInScreen() {
         toast.error("Creedenciales incorrectas");
         setLoading(false);
       }
-    }else{ router.push("/(authed)/(drawer)/(tabs)/(home)");
+    // }else{ router.push("/(authed)/(drawer)/(tabs)/(home)");
 
     }
 

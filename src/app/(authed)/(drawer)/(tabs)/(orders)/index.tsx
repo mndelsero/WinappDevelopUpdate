@@ -88,7 +88,7 @@ const scrollToTop = () => {
             Tus pedidos anteriores
           </Text>
 
-          <View style={tw`flex flex-row flex-wrap justify-between p-5`}>
+          <View style={tw`h-85vh flex flex-row flex-wrap justify-between px-5 mb-3rem`}>
             {categorias.map(({ id, nombre, imagen ,cantidad,fecha,precio}) => (
               <View
                 key={id}

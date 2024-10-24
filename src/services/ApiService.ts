@@ -10,6 +10,7 @@ import apisauce, { ApisauceInstance } from "apisauce";
 
 
 import { generateCardNumber } from "@/utils/helpers";
+import { err } from "react-native-svg";
 
 interface PropsBusinesses {
 	token: string,
@@ -285,23 +286,39 @@ export default class ApiService {
 				})
 			console.log(response.status)
 			const result = await response.json()
-			const ordered: any = result.data.order
-			console.log(ordered)
+			const ordered = result.data.order
+			
 
-			if (!response.ok) {
-				// Manejar errores HTTP
-				const errorData = await response.json();
-				console.error('Error en la suscripción:', errorData);
-				throw new Error(`Error ${response.status}: ${response.statusText}`);
-			}
+			
 
-			return response.json();
+			return ordered;
 		} catch (error) {
 			console.log(error);
 			throw error;
 		}
 
 	}
+
+	async getClientOrderById(token: string, OrderId: string) {
+		try {
+			const near = await fetch(`${API_URL}/me/order?id=${OrderId}`, {
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
+			});
+			console.log(near.status)
+			const response = await near.json();
+			console.log(response)
+
+
+
+			return response.data.order;
+
+		} catch (error) {
+			throw error
+		}
+	}
+
 
 
 
@@ -316,7 +333,7 @@ export default class ApiService {
 			});
 
 			const data = await response.json();
-			console.log("response", data.data);
+		
 
 			if (data && data.status === "success") {
 				return data;
@@ -342,7 +359,7 @@ export default class ApiService {
 			});
 
 			const data = await response.json();
-			console.log("response", data.data);
+			
 
 			if (data && data.status === "success") {
 				return data;
@@ -372,8 +389,7 @@ export default class ApiService {
 			},
 		);
 		const data = await response.json();
-		console.log('hola mundo', data);
-		console.log('categoria', category,);
+		
 
 		return data;
 	}
@@ -392,7 +408,7 @@ export default class ApiService {
 			});
 
 			const data = await response.json();
-			console.log("response", data.data);
+			
 
 			if (data && data.status === "success") {
 				return data;
@@ -405,6 +421,10 @@ export default class ApiService {
 			}
 		}
 	}
+
+
+
+
 
 
 
@@ -423,10 +443,10 @@ export default class ApiService {
 			});
 
 			const data = await response.json();
-			console.log("response", data.data);
+			
 
 			if (data && data.status === "success") {
-				return data;
+				return data.data.addon;
 			}
 		} catch (error) {
 			if (error instanceof SyntaxError) {
@@ -452,7 +472,7 @@ export default class ApiService {
 			});
 
 			const data = await response.json();
-			console.log("response", data.data);
+			
 
 			if (data && data.status === "success") {
 				return data;
@@ -468,6 +488,13 @@ export default class ApiService {
 
 
 
+
+
+
 }
+
+
+
+
 
 

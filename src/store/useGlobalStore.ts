@@ -13,6 +13,8 @@ interface GlobalState {
 		id: string;
 		name: string;
 	};
+
+	
 	
 	setCategoria: (categoria: { id: string; name: string }) => void;
 	setLocation: (location: Partial<GlobalState["location"]>) => void;
@@ -21,6 +23,8 @@ interface GlobalState {
 	setSelectedBusiness: (business: Business | null) => void;
 	selectProductItem: Product | null;
 	setSelectedProduct: (product: Product | null) => void;
+	waitingOrderNow: string|any;
+	setWaitingOrderNow: (order: string | null) => void;
 }
 
 const useGlobalStore = create<GlobalState>()(
@@ -48,6 +52,10 @@ const useGlobalStore = create<GlobalState>()(
 				selectProductItem: null,
 				setSelectedProduct: (product) =>
 					set(() => ({ selectProductItem: product })),
+				waitingOrderNow: null,
+				setWaitingOrderNow: (order) =>
+					set(() => ({ waitingOrderNow: order })),
+				
 			}),
 			{
 				name: "global-storage",

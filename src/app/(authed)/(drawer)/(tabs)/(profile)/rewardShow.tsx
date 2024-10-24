@@ -53,13 +53,11 @@ export default function RewardShow() {
     useState({});
 
   // Función para manejar los cambios de selección en las personalizaciones
-  const handleCheckedChangePersonalizaciones = (
-    taskId: string,
-    isChecked: boolean
-  ) => {
+  // Función para manejar los cambios de selección en las personalizaciones
+  const handleCheckedChangePersonalizaciones = (taskId: string) => {
     setSelectedTasksPersonalizaciones((prev) => ({
       ...prev,
-      [taskId]: isChecked,
+      [taskId]: !prev[taskId], // Cambia el estado al opuesto (marcar/desmarcar)
     }));
   };
 

@@ -50,6 +50,9 @@ export default function Home() {
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
 
   /*  ===============  Obtener la ubicación del usuario =============== */
+  // if (location.displayName !== ""){
+  //   router.push("/(authed)/(location)/select-location")
+  // }
   useEffect(() => {
     
     if (location.displayName !== "") {
@@ -174,7 +177,7 @@ export default function Home() {
           </MapView>
 
           <View
-            style={tw`bg-white       w-90vw bottom-40 left-5 rounded-2xl  p-3`}
+            style={tw`bg-white w-90vw bottom-40 left-5 rounded-2xl  p-3`}
           >
             <Text style={tw`text-center text-gray-400  text-sm tablet:text-3xl`}>
               Usted se encuentra en...
@@ -196,7 +199,7 @@ export default function Home() {
             </Text>
             <TouchableOpacity
               onPress={() => router.push("/(authed)/(location)/select-location")}
-              style={tw`mt-0 px-2 flex flex-row justify-start items-center tablet:mt-7  gap-1  w-6/6 tablet:w-2/6 mx-auto rounded-xl bg-white tablet:rounded-2xl  py-2 tablet:py-3 shadow-md mt-0 `}
+              style={tw`mt-2 px-2 flex flex-row justify-start items-center tablet:mt-7  gap-1  w-6/6 tablet:w-2/6 mx-auto rounded-xl bg-white tablet:rounded-2xl  py-2 tablet:py-3 shadow-md  `}
             >
               <Text style={tw`text-left text-gray-400  text-sm tablet:text-2xl`}>
                 {location?.displayName ? "" : "Seleccionar dirección"}

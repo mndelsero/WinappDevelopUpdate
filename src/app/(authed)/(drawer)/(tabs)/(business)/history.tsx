@@ -30,7 +30,7 @@ export default function HistoryTab() {
 		return apiService.getOrders(userId ?? "1", [], selectedBusiness?.id ?? 0);
 	  },
 	});
-	console.log(data);
+	
 
 	return (
 		<ScrollView style={tw.style("h-screen bg-background")}>
@@ -45,7 +45,7 @@ export default function HistoryTab() {
 					{data &&
 						data.length > 0 &&
 						data?.map((order: any) => {
-							console.log(order);
+						
 							return (
 								<Order
 									key={order.id}

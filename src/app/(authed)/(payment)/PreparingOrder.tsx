@@ -1,6 +1,8 @@
 import Input from "@/components/Input";
 import tw from "@/config/tw";
+import ApiService from "@/services/ApiService";
 import useGlobalStore from "@/store/useGlobalStore";
+import { useAuth } from "@clerk/clerk-expo";
 import { Ionicons } from "@expo/vector-icons";
 import { Stack, useRouter } from "expo-router";
 import React, { useEffect, useState } from "react";
@@ -18,25 +20,57 @@ import { SafeAreaView } from "react-native-safe-area-context";
 export default function PreparingOrder() {
   const router = useRouter();
   const { location, setSelectedBusiness } = useGlobalStore();
+const {waitingOrderNow, setWaitingOrderNow}=useGlobalStore()
+  const [status, setStatus] = useState("Payment pending");
+  const { getToken } = useAuth();
+const verificarStatus=async()=>{
 
-  const [status, setStatus] = useState("recibida");
+  const token = await getToken();
+  if (token === null) {
+    throw new Error("No token");
+  }
+
+  const orderId=waitingOrderNow.id
+
+  const service=new ApiService()
+  const result = await service.getClientOrderById(token,orderId)
+
+setStatus(result.status)
+
+
+  
+
+
+
+}
+
+let timer:any;
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setStatus("preparando");
-    }, 3000);
-    return () => clearTimeout(timer);
-  }, []);
+     // Declarar la variable fuera para acceder a ella en diferentes partes
 
-  useEffect(() => {
-    if (status === "preparando") {
-      const timer = setTimeout(() => {
-        // Reemplaza 'DestinationScreen' con el nombre de tu pantalla de destino
-        router.push("/(authed)/(payment)/OrderPlaced");
-      }, 3000);
-      return () => clearTimeout(timer);
+    if (status === "Payment pending"||"In progress" ) {
+      // Iniciar el intervalo cuando el status sea "Payment pending"
+      timer = setInterval(() => {
+        verificarStatus(); // Ejecuta la función cada 10 segundos
+      }, 10000);
     }
-  }, [status, router]);
+    if (status === "Done") {
+       setWaitingOrderNow(null)
+      setStatus("")
+      clearInterval(timer);
+        router.push("/(authed)/(payment)/OrderPlaced")
+    }
+    if(waitingOrderNow==null){
+      clearInterval(timer)
+    }
+   
+  
+    // Limpieza del intervalo al desmontar el componente
+    return () => clearInterval(timer);
+  }, [router,status]);
+ 
+  
 
   return (
     <>
@@ -51,7 +85,7 @@ export default function PreparingOrder() {
               <Ionicons name="checkmark" style={tw`text-xl text-primary`} />
             </View>
             <Text style={tw`text-gray-500 text-lg mt-2`}>
-              Finalizara a las 12:00 PM
+              Finalizara a en 15-25 minutos
             </Text>
             {/* Custom progress */}
             <View
@@ -61,9 +95,9 @@ export default function PreparingOrder() {
                 <View style={tw`w-1/1 h-1 bg-primary `} />
               </View>
               <View style={tw`flex flex-col items-center w-1/3 h-1`}>
-                {status === "recibida" ? (
+                {status === "Payment pending" ? (
                   <View style={tw`w-1/1 h-1 bg-gray-300 `} />
-                ) : status === "preparando" ? (
+                ) : status === "In progress" ? (
                   <View style={tw`w-1/1 h-1 bg-primary `} />
                 ) : null}
               </View>
@@ -76,20 +110,25 @@ export default function PreparingOrder() {
               entering={FadeIn}
               style={tw`flex justify-center items-center my-10`}
             >
-              {status === "recibida" ? (
+              {status === "Payment pending" ? (
                 <Animated.View entering={FadeIn.duration(1000)}>
                   <Image
                     source={require("../../../../assets/images/regalo.png")}
                     style={tw`w-32 h-32`}
                   />
                 </Animated.View>
-              ) : status === "preparando" ? (
+              ) : status === "In progress" ? (
                 <Animated.View entering={FadeIn.duration(1000)}>
                   <View style={tw`flex flex-col items-center`}>
                     <Image
                       source={require("../../../../assets/images/olla.png")}
                       style={tw`w-32 h-32`}
                     />
+                     <Text
+                      style={tw`text-gray-800 text-sm mt-2 bg-[#ffbf66] shadow-sm p-2 rounded-full`}
+                    >
+                      ¡Tu pedido esta siendo preparado!
+                    </Text>
                     <Text
                       style={tw`text-gray-800 text-sm mt-2 bg-[#ffbf66] shadow-sm p-2 rounded-full`}
                     >

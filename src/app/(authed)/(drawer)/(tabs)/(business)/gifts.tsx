@@ -88,7 +88,7 @@ export default function GiftsTab() {
 					renderItem={({ item }) => (
 						<IndividualImage
 							onPress={async (id) => {
-								console.log("id", item);
+							
 								setSelected(item);
 								ref.current?.expand();
 							}}
